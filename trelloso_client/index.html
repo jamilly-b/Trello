@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Trello</title>
+    <link rel="shortcut icon" href="img/treloso.png" type="image/x-icon">
+    <script defer type="module" src="js/main.js"></script>
+</head>
+
+<body>
+    <div id="forms">
+        <fieldset>
+            <legend>Meus Dados</legend>
+            <span id="me"></span>
+        </fieldset>
+
+        <div class="form">
+            <form id="form-create-user" autocomplete="on">
+                <img src="img/Trello_logo.svg.png" alt="" height="40px" width="150px" >
+                <legend>Registre-se para continuar</legend>
+                <input type="text" name="name" id="new-name" placeholder="Nome">
+                <input type="text" name="username" id="new-username" placeholder="Username">
+                <input type="password" name="password" id="new-password" placeholder="Password">
+                <input type="text" name="avatar" id="new-avatar" placeholder="Avatar URL">
+                <input type="submit" value="Registre-se">
+                <input type="reset" value="Cancelar">
+                <a href="#form-login">Já tem conta? Faça Login</a>
+            </form>
+        </div>
+
+        <div class="form">
+            <form id="form-login" autocomplete="on">
+                <img src="img/Trello_logo.svg.png" alt="" height="40px" width="150px" >
+                <legend>Entre para continuar</legend>
+                    <input type="text" name="username" id="username">
+                    <input type="password" name="password" id="password">
+                    <input type="submit" value="Entrar">
+                    <input type="reset" value="Cancelar">
+                    <a href="#form-create-user">Ainda não tem conta? Faça cadastro</a>
+            </form>
+        </div>
+
+        <div class="form" id="listar-usuarios">
+            <legend>Listar Usuários</legend>
+            <button id="btn-users">Lista Usuários</button>
+            <ul id="list-users"></ul>
+        </div>
+    </div>
+
+    <div id="tela-pricipal">
+        
+    </div>
+    <!-- <script src="js/display.js"></script> -->
+</body>
+
+</html>
