@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+    <title>Trello</title>
+    <link rel="shortcut icon" href="img/treloso.png" type="image/x-icon">
+    <script defer type="module" src="js/main.js"></script>
+</head>
+
+<body>
+    <div id="forms">
+        <fieldset>
+            <legend>Meus Dados</legend>
+            <span id="me"></span>
+        </fieldset>
+
+        <div class="form">
+            <form id="form-create-user" autocomplete="on">
+                <img src="img/Trello_logo.svg.png" alt="" height="40px" width="150px" >
+                <legend>Registre-se para continuar</legend>
+                <input type="text" name="name" id="new-name" placeholder="Nome">
+                <input type="text" name="username" id="new-username" placeholder="Username">
+                <input type="password" name="password" id="new-password" placeholder="Password">
+                <input type="text" name="avatar" id="new-avatar" placeholder="Avatar URL">
+                <input type="submit" value="Registre-se">
+                <input type="reset" value="Cancelar">
+                <a id="exibir-login">Já tem conta? Faça Login</a>
+            </form>
+        </div>
+
+        <div class="form">
+            <form id="form-login" autocomplete="on">
+                <img src="img/Trello_logo.svg.png" alt="" height="40px" width="150px" >
+                <legend>Entre para continuar</legend>
+                    <input type="text" name="username" id="username">
+                    <input type="password" name="password" id="password">
+                    <input type="submit" value="Entrar">
+                    <input type="reset" value="Cancelar">
+                    <a id="exibir-cadastro">Ainda não tem conta? Faça cadastro</a>
+            </form>
+        </div>
+
+        <div class="form" id="listar-usuarios">
+            <legend>Listar Usuários</legend>
+            <button id="btn-users">Lista Usuários</button>
+            <ul id="list-users"></ul>
+        </div>
+    </div>
+
+    <div id="home">
+        <!-- é correto importar o css aqui??? -->
+        <link rel="stylesheet" href="css/main.css">
+        <!-- Uma barra de navegação -->
+        <nav>
+            <!-- Adicionar um menu à barra de navegação (Opções para navegar entre as "páginas" e sair) -->
+            <menu></menu> <!-- ver depois qual o melhor tipo de menu -->
+            <!-- Adicionar um ícone com o avatar do usuário, no canto direito -->
+            <!-- Ao clicar no ícone apresentar os dados do usuário -->
+            <img src="img/icon.png" alt="Avatar">
+        </nav>
+        <!-- Exibir os quadros criados pelo usuário separando os favoritos dos demais -->
+        <div id="main">
+            <div class="board" id="fav-board">
+                <div class="cards" id="fav-cards">
+                    <div class="card"></div>
+                </div>
+            </div>
+            <div class="board" id="all-boards">
+                <div class="cards" id="all-cards">
+                    <div class="card"></div>
+                </div>
+            </div>
+            <!-- Opção para a criação do Quadro -->
+            <!-- Opção para editar o Quadro -->
+            <!-- Opção para definir se o Quadro é favorito -->
+        </div>
+        <!-- Exibir uma barra lateral com opções para filtrar a lista de quadros (mostrar todos, favoritos) -->
+        <aside>
+
+        </aside>
+    </div>
+    <script src="js/display.js"></script>
+</body>
+
+</html>

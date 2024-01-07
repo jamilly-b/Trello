@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  trelloso_postgres:
+    image: postgres:14.3-alpine
+    container_name: trelloso_postgres
+    env_file:
+      - .env
+    hostname: ${POSTGRES_HOST}
+    restart: on-failure
+    ports:
+      - "5437:5432"
+    volumes:
+      - db-postgres:/var/lib/postgresql/data
+      # - ./scripts/create_databases.sql:/docker-entrypoint-initdb.d/create_databases.sql
+    healthcheck:
+      test: pg_isready -U postgres -d trelloso-fastapi
+      interval: 10s
+      timeout: 5s
+      retries: 5      
+
+  trelloso_fastapi:
+    image: trelloso_api:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    hostname: trelloso_fastapi
+    container_name: trelloso_fastapi
+    depends_on:
+      - trelloso_postgres
+    ports:
+      - "8087:8000"
+    volumes:
+      - ./:/home/app
+
+
+volumes:
+  db-postgres:
+    driver: local
+
