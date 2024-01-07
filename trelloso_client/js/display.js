@@ -1,27 +1,34 @@
-// pega os dados do html
-let formularios = document.querySelectorAll('form')
-let formLogin = document.getElementById("form-login");
-let formCreateUser = document.getElementById("form-create-user");
-let telaPrincipal = document.getElementById("tela-pricipal");
+// import token from "./token";
+// import user from "./users";
 
-function ExibirTela(){
-  telaPrincipal.style.display = 'none';
-  formLogin.style.display = 'none';
-  formCreateUser.style.display = 'none';
+// Pega os dados do HTML
+let form = document.getElementById("forms");
+let telaHome = document.getElementById("home");
+let telaLogin = document.getElementById("form-login");
+let telaCadastro = document.getElementById("form-create-user");
 
-  if(Token.getToken() !== null){
-    telaPrincipal.style.display = 'grid';
-    formLogin.style.display = 'none';
-    formCreateUser.style.display = 'none';
-  }
-  else if(formLogin.style.display === 'grid'){
-    formCreateUser.style.display = 'none';
-    telaPrincipal.style.display = 'none';
-  }
-  else if(formCreateUser.style.display === 'grid'){
-    formLogin.style.display = 'none';
-    telaPrincipal.style.display = 'none';
-  }
-}
+// exibe apenas a tela de login inicialmente
+telaHome.style.display = 'none';
+telaLogin.style.display = 'flex';
+telaCadastro.style.display = 'none';
 
-ExibirTela();
+document.getElementById('exibir-cadastro').addEventListener('click', function(event) {
+  event.preventDefault();
+  telaLogin.style.display = 'none';
+  telaCadastro.style.display = 'flex';
+  telaHome.style.display = 'none';
+});
+
+document.getElementById('exibir-login').addEventListener('click', function(event) {
+  event.preventDefault();
+  telaLogin.style.display = 'flex';
+  telaCadastro.style.display = 'none';
+  telaHome.style.display = 'none';
+});
+
+// Fazer autenticação do usuário para exibir a tela principal usando auth e token
+telaLogin.addEventListener('submit', function(event) {
+  event.preventDefault();
+  form.style.display = "none"
+  telaHome.style.display = 'grid';
+});

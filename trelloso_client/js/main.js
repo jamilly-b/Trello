@@ -13,7 +13,6 @@ let spanMe = document.getElementById("me");
 // exibe as informações do usuário logado
 User.me().then(me => {
   spanMe.innerHTML = JSON.stringify(me);
-  //apagar linha 16 depois
   console.log("Usuario logado: \n" + JSON.stringify(me));
 }).catch(error => {
   console.error(error.message);
@@ -60,4 +59,3 @@ formCreateUser.addEventListener("submit", (event) => {
     console.log(error.message);
   });
 });
-
