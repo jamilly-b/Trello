@@ -1,5 +1,5 @@
 import Token from './token.js';
-const _apiHost = 'http://localhost:8087/api/v1';
+const _apiHost = 'http://192.168.90.220:8087/api/v1';
 
 async function request(url, params, method = 'GET') {
 

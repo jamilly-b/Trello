@@ -1,6 +1,7 @@
 // importa os mmódulos user e token
 import User from './users.js';
 import Token from './token.js';
+import TelaHome from './display.js';
 
 // pega os dados do html
 let formLogin = document.getElementById("form-login");
@@ -10,24 +11,19 @@ let btnListUsers = document.getElementById("btn-users");
 let spanMe = document.getElementById("me");
 
 
-// exibe as informações do usuário logado
-User.me().then(me => {
-  spanMe.innerHTML = JSON.stringify(me);
-  console.log("Usuario logado: \n" + JSON.stringify(me));
-}).catch(error => {
-  console.error(error.message);
-});
-
 // captura o evento submit e envia os dados de login
 formLogin.addEventListener("submit", (event) => {
   event.preventDefault();
-
   let formData = new FormData(formLogin);
   User.login(formData).then(token => {
     Token.saveToken(token);
+    console.log("Usuario logado.");
+    TelaHome.abrirHome();
+  }).catch(error => {
+    console.log(error);
+    console.log("Algo deu errado.");
+    alert("Algo deu errado. Tente Novamente.");
   });
-
-  console.log("Usuario logado.")
 });
 
 // captura o evento click e lista os usuários cadastrados
@@ -55,6 +51,11 @@ formCreateUser.addEventListener("submit", (event) => {
   // cria um novo usuário com os dados do form
   User.create(name, username, password, avatar).then(user=>{
     console.log(user);
+    alert("Usuário " + username + " cadastrado com sucesso!");
+    formCreateUser.classList.remove("show");
+    formCreateUser.classList.add("no-show");
+    formLogin.classList.remove("no-show");
+    formLogin.classList.add("show");
   }).catch(error => {
     console.log(error.message);
   });

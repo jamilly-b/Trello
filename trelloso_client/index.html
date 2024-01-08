@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Trello</title>
     <link rel="shortcut icon" href="img/treloso.png" type="image/x-icon">
     <script defer type="module" src="js/main.js"></script>
@@ -17,8 +18,8 @@
             <legend>Meus Dados</legend>
             <span id="me"></span>
         </fieldset>
-
-        <div class="form">
+        <!-- cadastro -->
+        <div class="form no-show" id="tela-cadastro">
             <form id="form-create-user" autocomplete="on">
                 <img src="img/Trello_logo.svg.png" alt="" height="40px" width="150px" >
                 <legend>Registre-se para continuar</legend>
@@ -31,8 +32,8 @@
                 <a id="exibir-login">Já tem conta? Faça Login</a>
             </form>
         </div>
-
-        <div class="form">
+        <!-- login -->
+        <div class="form show" id="tela-login">
             <form id="form-login" autocomplete="on">
                 <img src="img/Trello_logo.svg.png" alt="" height="40px" width="150px" >
                 <legend>Entre para continuar</legend>
@@ -40,7 +41,7 @@
                     <input type="password" name="password" id="password">
                     <input type="submit" value="Entrar">
                     <input type="reset" value="Cancelar">
-                    <a id="exibir-cadastro">Ainda não tem conta? Faça cadastro</a>
+                    <a id="exibir-cadastro">Ainda não tem uma conta? Faça cadastro</a>
             </form>
         </div>
 
@@ -51,16 +52,28 @@
         </div>
     </div>
 
-    <div id="home">
-        <!-- é correto importar o css aqui??? -->
-        <link rel="stylesheet" href="css/main.css">
+    <div class="no-show" id="home" >
         <!-- Uma barra de navegação -->
         <nav>
             <!-- Adicionar um menu à barra de navegação (Opções para navegar entre as "páginas" e sair) -->
-            <menu></menu> <!-- ver depois qual o melhor tipo de menu -->
+            <menu>
+                <ul>
+                    <!-- 
+                    Home: Voltar para essa tela
+                    Sair: Voltar para a tela de login 
+                    -->
+                    <img src="img/Trello_logo.svg.png" alt=""> 
+
+                </ul>
+                <ul>
+                    <!-- Imagem do usuário, informada no cadastro da conta: Exibir uma página com as informações
+                    do usuário (Pode ser um um form para atualizar esses dados, mesmos campos da tela de
+                    registro, mas não pode alterar o nome do usuário!) -->
+                    <img src="img/icon.png" alt="Avatar">
+                </ul>
+            </menu>
             <!-- Adicionar um ícone com o avatar do usuário, no canto direito -->
             <!-- Ao clicar no ícone apresentar os dados do usuário -->
-            <img src="img/icon.png" alt="Avatar">
         </nav>
         <!-- Exibir os quadros criados pelo usuário separando os favoritos dos demais -->
         <div id="main">
@@ -83,7 +96,7 @@
 
         </aside>
     </div>
-    <script src="js/display.js"></script>
+    <!-- <script type="module" src="js/display.js"></script> -->
 </body>
 
 </html>
