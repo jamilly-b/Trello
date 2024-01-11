@@ -23,4 +23,9 @@ async function me() {
     return user;
 }
 
-export default {login, getAll, create, me};
+async function myBoards(){
+    const boardList = await Fetch.request('/users/me/boards');
+    return boardList;
+}
+
+export default {login, getAll, create, me, myBoards};

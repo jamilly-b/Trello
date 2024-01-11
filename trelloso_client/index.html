@@ -10,6 +10,10 @@
     <title>Trello</title>
     <link rel="shortcut icon" href="img/treloso.png" type="image/x-icon">
     <script defer type="module" src="js/main.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
 </head>
 
 <body>
@@ -52,7 +56,7 @@
         </div>
     </div>
 
-    <div class="no-show" id="home" >
+    <div id="home" class="no-show" >
         <!-- Uma barra de navegação -->
         <nav>
             <!-- Adicionar um menu à barra de navegação (Opções para navegar entre as "páginas" e sair) -->
@@ -62,39 +66,71 @@
                     Home: Voltar para essa tela
                     Sair: Voltar para a tela de login 
                     -->
-                    <img src="img/Trello_logo.svg.png" alt=""> 
-
-                </ul>
-                <ul>
-                    <!-- Imagem do usuário, informada no cadastro da conta: Exibir uma página com as informações
-                    do usuário (Pode ser um um form para atualizar esses dados, mesmos campos da tela de
-                    registro, mas não pode alterar o nome do usuário!) -->
-                    <img src="img/icon.png" alt="Avatar">
+                    <li><img src="img/trello-logo.gif" alt="" id="logo-trello-home"> </li>
+                    <li><a>Home</a></li>
+                    <li><a id="create-board">Novo</a></li>
+                    <li><a>Sair</a></li>
                 </ul>
             </menu>
             <!-- Adicionar um ícone com o avatar do usuário, no canto direito -->
             <!-- Ao clicar no ícone apresentar os dados do usuário -->
+             <!-- Imagem do usuário, informada no cadastro da conta: Exibir uma página com as informações
+            do usuário (Pode ser um um form para atualizar esses dados, mesmos campos da tela de
+            registro, mas não pode alterar o nome do usuário!) -->
+            <img src="img/icon.png" alt="Avatar" id="user-pic">
         </nav>
         <!-- Exibir os quadros criados pelo usuário separando os favoritos dos demais -->
         <div id="main">
-            <div class="board" id="fav-board">
-                <div class="cards" id="fav-cards">
-                    <div class="card"></div>
+            <div id="fav-boards-div" class="boards">
+                <span>Quadros Favoritados</span>
+                <div class="quadros" id="fav-boards">
+                    <ul id="quadros-fav" class="board-list">
+                        <li>
+                            <div class="board">
+                                <span>Nome do quadro</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="board" id="all-boards">
-                <div class="cards" id="all-cards">
-                    <div class="card"></div>
+            <hr>
+            <div id="all-boards-div">
+                <span>Quadros</span>
+                <div class="quadros" id="all-boards">
+                    <ul id="quadros" class="board-list">
+                        <li>
+                            <div class="board">
+                                <span>Nome do quadro</span>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <!-- Opção para a criação do Quadro -->
-            <!-- Opção para editar o Quadro -->
-            <!-- Opção para definir se o Quadro é favorito -->
         </div>
         <!-- Exibir uma barra lateral com opções para filtrar a lista de quadros (mostrar todos, favoritos) -->
         <aside>
 
         </aside>
+    </div>
+    <div class="modal no-show" id="modal-newBoard">
+        <form>
+            <h3>Criar novo quadro</h3>
+            <input type="text" name="nome" placeholder="Nome">
+            <input type="text" name="color" placeholder="Cor">
+            <button type="submit">Criar</button>
+            <button type="reset">Cancelar</button>
+        </form>
+    </div>
+    <div class="modal no-show" id="modal">
+        <form>
+            <label></label>
+            <input type="text" name="nome">
+            <button type="submit">Criar</button>
+            <button type="reset">Cancelar</button>
+        </form>
     </div>
     <!-- <script type="module" src="js/display.js"></script> -->
 </body>

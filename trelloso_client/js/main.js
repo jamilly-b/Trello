@@ -1,15 +1,20 @@
 // importa os mmódulos user e token
 import User from './users.js';
+import Fetch from './fetch.js';
 import Token from './token.js';
-import TelaHome from './display.js';
+import Tela from './display.js';
+import Modal from './modal.js';
 
-// pega os dados do html
+
+
 let formLogin = document.getElementById("form-login");
 let formCreateUser = document.getElementById("form-create-user");
+let telaLogin = document.getElementById("tela-login");
+let telaCadastro = document.getElementById("tela-cadastro");
 let listUsers = document.getElementById("list-users");
 let btnListUsers = document.getElementById("btn-users");
+let telaHome = document.getElementById("home");
 let spanMe = document.getElementById("me");
-
 
 // captura o evento submit e envia os dados de login
 formLogin.addEventListener("submit", (event) => {
@@ -18,11 +23,10 @@ formLogin.addEventListener("submit", (event) => {
   User.login(formData).then(token => {
     Token.saveToken(token);
     console.log("Usuario logado.");
-    TelaHome.abrirHome();
+    Tela.mudarTela(telaLogin, telaHome);
   }).catch(error => {
     console.log(error);
-    console.log("Algo deu errado.");
-    alert("Algo deu errado. Tente Novamente.");
+    alert("Usuário ou senha incorretos. Tente Novamente.");
   });
 });
 
@@ -52,11 +56,93 @@ formCreateUser.addEventListener("submit", (event) => {
   User.create(name, username, password, avatar).then(user=>{
     console.log(user);
     alert("Usuário " + username + " cadastrado com sucesso!");
-    formCreateUser.classList.remove("show");
-    formCreateUser.classList.add("no-show");
-    formLogin.classList.remove("no-show");
-    formLogin.classList.add("show");
+    Tela.mudarTela(telaCadastro, telaLogin);
   }).catch(error => {
     console.log(error.message);
   });
 });
+
+
+// troca a tela de login pela de cadastro
+document.getElementById("exibir-login").addEventListener("click", (event) => {
+  event.preventDefault();
+  Tela.mudarTela(telaCadastro, telaLogin);
+})
+document.getElementById("exibir-cadastro").addEventListener("click", (event) => {
+  event.preventDefault();
+  Tela.mudarTela(telaLogin, telaCadastro);
+})
+
+// novo quadro
+
+function novoQuadro(){
+  let nome = document.querySelector('input[name="nome"]').value;
+  const boardData = {
+    name: nome,
+    color: "#FFFFF",
+    favorito: false
+  };
+  console.log(boardData);
+
+  Fetch.request('/boards/', boardData, 'POST').then(newBoard => {
+    console.log(newBoard);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+}
+
+Modal.abrirDialogo(novoQuadro);
+
+
+// let modal = document.getElementById("modal");
+
+// document.getElementById("create-board").addEventListener("click", (event) =>{
+//   event.preventDefault();
+//   modal.classList.remove("no-show");
+//   modal.classList.add("show");  
+//   modal.addEventListener("submit", (event)=>{
+//     event.preventDefault();
+//     let nome = document.querySelector('input[name="nome"]').value;
+
+//     const boardData = {
+//       name: nome,
+//       color: "#FFFFF",
+//       favorito: false
+//     };
+//     console.log(boardData);
+
+//     Fetch.request('/boards/', boardData, 'POST').then(newBoard => {
+//       console.log(newBoard);
+//     })
+//     .catch(error => {
+//       console.error(error);
+//     });
+
+//     // modal.classList.remove("show");
+//     // nome.value = "";
+//   })
+// });
+
+//mostra todos os quadros
+let ListaQuadros = document.getElementById("quadros");
+
+User.myBoards().then((array)=>{
+  array.forEach(element => {
+    let quadro = document.createElement("li");
+    
+    quadro.innerHTML =  `
+      <div class="board">
+        <span>${element.name}</span>
+      </div>
+    `;
+    ListaQuadros.appendChild(quadro);
+
+    let div = document.querySelector(".board");
+    div.setAttribute("id", `board ${element.id}`);
+    div.style.backgroundColor = element.color;
+
+
+    console.log(quadro);
+  });
+})
