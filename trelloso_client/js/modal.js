@@ -1,4 +1,4 @@
-let modal = document.getElementById("modal");
+let modal = document.getElementById("modal-newBoard");
 
 function abrirDialogo(action){
     document.getElementById("create-board").addEventListener("click", (event) =>{
@@ -8,6 +8,8 @@ function abrirDialogo(action){
         modal.addEventListener("submit", (event)=>{
           event.preventDefault();
           action();
+          modal.classList.add("no-show");
+          modal.classList.remove("show");
         })
         modal.addEventListener("reset", (event)=>{
             event.preventDefault();

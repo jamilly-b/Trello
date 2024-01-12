@@ -45,7 +45,6 @@ nav {
     grid-area: nav;
     display: flex;
     justify-content: space-between;
-    border: solid 1rem #ffffff;
 }
 
 menu {
@@ -66,35 +65,39 @@ menu ul li{
 #main {
     grid-area: main;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    border: solid 1rem #ffffff;
     padding-left: 10px;
+    padding-right: 10px;
 }
 
 .board-list{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 } 
+
 .board-list li{
     list-style: none;
     margin: 2%;
 }
 
 .board {
+    width: 1fr;
+    height: 10rem;
+    border-radius: 10px;
     color: #000;
     background-color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 700;
-    min-width: 25rem;
-    width: 25%;
-    height: 10rem;
+    display: flex;
+    padding-top: 5px;
 }
-.board i{
-    margin: 3% 7%;
+#board-icons{
+    display: flex;
+    justify-content: end;
 }
 
 .board span{
-    padding: 5%;
+    padding-left: 5%;
+    padding-right: 1.5rem;
 }
 
 .card {
@@ -102,7 +105,6 @@ menu ul li{
 
 aside {
     grid-area: barra-lateral;
-    border: solid 5px #ffffff;
 }
 
 .overlay {
@@ -121,11 +123,28 @@ aside {
     transform: translate(-50%, -50%);
     background: #fff;
     z-index: 1000; 
+    border: solid 1px rgb(218, 218, 218);
+    border-radius: 20px;
 }
 
 .modal form{
     width: 300px; 
     height: 200px;
-    display: flex;
-    flex-direction: column;
+    padding: 20% 15%;
+    color: #000;
+    border: none;
+}
+.modal form input{
+    width: 200px;
+}
+
+.modal form button{
+    width: 9.8rem;
+}
+
+#fav-boards-div{
+}
+
+#all-boards-div{
+    display: block;
 }
