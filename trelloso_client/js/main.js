@@ -3,6 +3,7 @@ import User from './users.js';
 import Fetch from './fetch.js';
 import Token from './token.js';
 import Tela from './display.js';
+import Board from './board.js';
 import Modal from './modal.js';
 
 
@@ -24,6 +25,7 @@ formLogin.addEventListener("submit", (event) => {
     Token.saveToken(token);
     console.log("Usuario logado.");
     Tela.mudarTela(telaLogin, telaHome);
+    Board.exibirBoards();
   }).catch(error => {
     console.log(error);
     alert("Usuário ou senha incorretos. Tente Novamente.");
@@ -62,7 +64,6 @@ formCreateUser.addEventListener("submit", (event) => {
   });
 });
 
-
 // troca a tela de login pela de cadastro
 document.getElementById("exibir-login").addEventListener("click", (event) => {
   event.preventDefault();
@@ -73,65 +74,10 @@ document.getElementById("exibir-cadastro").addEventListener("click", (event) => 
   Tela.mudarTela(telaLogin, telaCadastro);
 })
 
-// novo quadro
+let createBoard = document.getElementById("create-board");
 
-function novoQuadro(){
-  let nome = document.querySelector('input[name="nome"]').value;
-  let color = document.querySelector('input[name="color"]').value;
-  const boardData = {
-    name: nome,
-    color: color,
-    favorito: false
-  };
-  console.log(boardData);
-
-  Fetch.request('/boards/', boardData, 'POST').then(newBoard => {
-    console.log(newBoard);
-  })
-  .catch(error => {
-    console.error(error);
-  });
-}
-Modal.abrirDialogo(novoQuadro);
-
-
-//mostra todos os quadros
-
-let listaQuadros = document.getElementById("quadros");
-let quadrosFavoritos = document.getElementById("quadros-fav");
-User.myBoards().then((array)=>{
-  array.forEach(element => {
-    let quadro = document.createElement("li");
-    
-    quadro.innerHTML =  `
-      <div class="board" id = "board-${element.id}">
-        <span>${element.name}</span>
-        <div class="board-icons">
-          <i class="fa fa-star-o show" aria-hidden="true"></i>
-          <i class="fa fa-star no-show" aria-hidden="true"></i>
-          <i class="fa fa-trash-o" aria-hidden="true"></i>
-        </div>
-      </div>
-    `;
-    listaQuadros.appendChild(quadro);
-
-    let div = document.querySelector(".board");
-    div.style.backgroundColor = element.color;
-
-    if (element.favorite === true){
-      quadrosFavoritos.appendChild(quadro);
-    }
-  });
+createBoard.addEventListener("click", (event) => {
+  event.preventDefault();
+  Modal.abrirDialogo(Board.novoQuadro);
+  // Board.novoQuadro();
 })
-
-
-// favoritar quadro
-
-// let emptyStar = document.getElementsByClassName("fa fa-star-o show");
-// let fullStar = document.getElementsByClassName("fa fa-star no-show");
-
-// emptyStar.addEventListener("click", (event) => {
-//   let board = document.getElementsByClassName("board");
-//   board.favorite = true;
-//   emptyStar.Tela.mudarTela(emptyStar, fullStar);
-// });

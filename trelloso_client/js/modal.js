@@ -1,21 +1,19 @@
-let modal = document.getElementById("modal-newBoard");
+let dialogo = document.getElementById("dialog");
+let form = document.getElementById("modal-newBoard");
 
 function abrirDialogo(action){
-    document.getElementById("create-board").addEventListener("click", (event) =>{
+    dialogo.classList.remove("no-show");
+    dialogo.classList.add("show");  
+    form.addEventListener("submit", (event)=>{
         event.preventDefault();
-        modal.classList.remove("no-show");
-        modal.classList.add("show");  
-        modal.addEventListener("submit", (event)=>{
-          event.preventDefault();
-          action();
-          modal.classList.add("no-show");
-          modal.classList.remove("show");
-        })
-        modal.addEventListener("reset", (event)=>{
-            event.preventDefault();
-            modal.classList.remove("show");
-            modal.classList.add("no-show");
-        });
+        action();
+        dialogo.classList.add("no-show");
+        dialogo.classList.remove("show");
+    })
+    form.addEventListener("reset", (event)=>{
+        event.preventDefault();
+        dialogo.classList.remove("show");
+        dialogo.classList.add("no-show");
     });
 }
 

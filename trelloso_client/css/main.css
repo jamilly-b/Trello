@@ -90,10 +90,16 @@ menu ul li{
     display: flex;
     padding-top: 5px;
 }
-#board-icons{
+.board-icons{
     display: flex;
     justify-content: end;
+    padding-top: 5px;
 }
+
+.board-icons i{
+    margin-right: 10px;
+}
+
 
 .board span{
     padding-left: 5%;
