@@ -78,73 +78,7 @@
             <img src="img/icon.png" alt="Avatar" id="user-pic">
         </nav>
         <div class="list-page no-show" id="list-page"> 
-            <div class="div-lists" id="div-lists">
-                <!-- <ul class="all-lists" id="all-lists">
-                    <li class="list" id="">
-                        <div class="list-content">
-                            <div class="list-info"> 
-                                <span class="list-Name">Lista 1</span>
-                                <div class="list-icons">
-                                    <i class="fa fa-comments" aria-hidden="true"></i>
-                                    <i class="fa fa-users" aria-hidden="true"></i>
-                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            cards 
-                            <div class="show-cards"> 
-                                <ul class="all-cards">
-                                    <li class="card">
-                                        <div class="tags-board">
-                                            <ul class="tags">
-                                                <li class="tag">tag</li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-data"> 
-                                            <span id="card-description">descrição do card</span> 
-                                            <div class="card-icons">
-                                                <i class="fa fa-align-justify" aria-hidden="true"></i>
-                                                <i class="fa fa-comments" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="card">
-                                        <div class="tags-board">
-                                            <ul class="tags">
-                                                <li class="tag">tag</li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-data"> 
-                                            <span id="card-description">descrição do card</span> 
-                                            <div class="card-icons">
-                                                <i class="fa fa-align-justify" aria-hidden="true"></i>
-                                                <i class="fa fa-comments" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="card">
-                                        <div class="tags-board">
-                                            <ul class="tags">
-                                                <li class="tag">tag</li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-data"> 
-                                            <span id="card-description">descrição do card</span> 
-                                            <div class="card-icons">
-                                                <i class="fa fa-align-justify" aria-hidden="true"></i>
-                                                <i class="fa fa-comments" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-        
-                            <div class="create-new-card">
-                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                <span class="new-card">Adicionar um cartão</span>
-                            </div>
-                        </div>
-                    </li>
-                </ul> -->
+            <div class="div-lists" id="div-lists">     
             </div>
         </div>
         <main id="main-content">
@@ -179,11 +113,19 @@
         </main>
     </div>
 
-    <dialog id="dialog">
+    <dialog class="dialog">
         <form id="modal-newBoard">
             <h3>Criar novo quadro</h3>
             <input type="text" name="nome" placeholder="Nome">
             <input type="text" name="color" id="board-color" placeholder="Cor">
+            <button type="submit">Criar</button>
+            <button type="reset">Cancelar</button>
+        </form>
+    </dialog>
+    <dialog class="dialog">
+        <form id="modal-newList">
+            <h3>Criar novo quadro</h3>
+            <input type="text" name="nome" placeholder="Nome">
             <button type="submit">Criar</button>
             <button type="reset">Cancelar</button>
         </form>

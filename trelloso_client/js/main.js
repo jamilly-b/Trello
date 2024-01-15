@@ -97,5 +97,14 @@ let menuNovoQuadro = document.getElementById("create-board");
 menuNovoQuadro.addEventListener("click", (event) => {
   event.preventDefault();
   Modal.abrirDialogo(Board.novoQuadro);
-  
 });
+
+
+let boardID = localStorage.getItem("board-id");
+let novaLista = document.getElementsByClassName("create-new-list");
+novaLista.addEventListener("click", (event) => {
+  event.preventDefault();
+  Modal.abrirDialogo(Board.criarLista(boardID));
+});
+
+

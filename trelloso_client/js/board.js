@@ -56,11 +56,17 @@ function exibirBoards(){
               divListas.appendChild(todasListasUl);
             }
 
+            let addNovaLista = document.createElement('div');
+            addNovaLista.innerHTML = `
+              <div id="create-new-list-${id}" class="create-new-list">
+                <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+              </div>
+            `;
+
             
             divListas.innerHTML = "";
             
             Fetch.request(`/boards/${id}/lists`, id).then(listas => {
-              // console.log(listas);
               listas.forEach(lista => {
                 console.log("Lista: ", lista);
                 let nomeLista = lista.name;
@@ -77,9 +83,8 @@ function exibirBoards(){
                         <div class="list-info"> 
                             <span class="list-Name">${nomeLista}</span>
                             <div class="list-icons">
-                                <i class="fa fa-comments" aria-hidden="true"></i>
-                                <i class="fa fa-users" aria-hidden="true"></i>
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                <span></span>
                             </div>
                         </div>
     
@@ -90,9 +95,14 @@ function exibirBoards(){
                     </div>
                 </li>
                 `
+
                 todasListasUl.appendChild(novalista);
-                // exibirCards(cards, listaID);
+                divListas.appendChild(todasListasUl);
+
+                exibirCards(cards, listaID);
               })
+              
+              divListas.append(addNovaLista);
             })
 
             
@@ -119,75 +129,99 @@ function exibirBoards(){
   });
 }
 
-// adicionar card 
+// exibir cards
 
-// function exibirCards(cards, listaID) {
-//   console.log("Cards: \n", cards);
-//   if(cards !== null && cards.length > 0) {
-//     console.log(cards);
-//     // Fetch.request(`/lists/${listaID}/cards`).then(cards => {
-//       console.log(cards);
-//       console.log("tamanho do array cards: ",cards.length);
-  
-//       let divCards = document.createElement('div');
-//       divCards.classList.add("show-cards");
-  
-//       let todosCardsUl = document.createElement('ul');
-//       todosCardsUl.classList.add("all-cards");
-  
-//       if (!divCards.querySelector(".all-cards")) {
-//         divCards.appendChild(todosCardsUl);
-//       }
-  
-//       cards.forEach(card => {
-//         let nome = card.name;
-//         let cardID = card.id;
-//         let comments = card.cardcomments_count;
-//         let members = card.cardmembers_count;
-//         let tags = card.tags;
-  
-//         let cardLista = document.createElement('li');
-  
-//         cardLista.innerHTML =
-//           `
-//           <li class="card">
-//             <div class="tags-board">
-//                 <ul class="tags">
-//                   <li class="tag">tag</li>
-//                   <li class="tag"></li>
-//                   <li class="tag"></li>
-//                 </ul>
-//             </div>
-//             <div class="card-data"> 
-//                 <span id="card-description">${nome}</span> 
-//                 <div class="card-icons">
-//                   <i class="fa fa-align-justify" aria-hidden="true">${members}</i>
-//                   <i class="fa fa-comments" aria-hidden="true">${comments}</i>
-//                 </div>
-//             </div>
-//           </li>
-//         `;
-  
-//         todosCardsUl.appendChild(cardLista);
-//       });
-  
-//       let div = document.getElementById(`list-content-${listaID}`);
-//       if (div) {
-//         div.appendChild(divCards);
-//       } else {
-//         console.error(`Elemento com ID 'list-content-${listaID}' não encontrado.`);
-//       }
-//     // }).catch(error => {
-//     //   console.error(error);
-//     // });
-
-//     console.log("\n \n \n");
-//   }
-//   else {
+function exibirCards(cards, listaID) {
+  console.log("Cards: \n", cards);
+  if(cards !== null && cards.length > 0) {
+    console.log(cards);
     
-//   }
+      console.log(cards);
+      console.log("tamanho do array cards: ",cards.length);
+  
+      let divCards = document.createElement('div');
+      divCards.classList.add("show-cards");
+  
+      let todosCardsUl = document.createElement('ul');
+      todosCardsUl.classList.add("all-cards");
+  
+      if (!divCards.querySelector(".all-cards")) {
+        divCards.appendChild(todosCardsUl);
+      }
+  
+      cards.forEach(card => {
+        let nome = card.name;
+        let cardID = card.id;
+        let comments = card.cardcomments_count;
+        let members = card.cardmembers_count;
+        let tags = card.tags;
+  
+        let cardLista = document.createElement('li');
+  
+        cardLista.innerHTML =
+          `
+          <li class="card">
+            <div class="tags-board">
+                <ul class="tags">
+                  <li class="tag"></li>
+                  <li class="tag"></li>
+                  <li class="tag"></li>
+                </ul>
+                <div class="delete-card" id="delete-card-${cardID}">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="card-data"> 
+                <span id="card-description">${nome}</span> 
+                <div class="card-icons">
+                  <i class="fa fa-users" aria-hidden="true"> ${members} </i>
+                  <i class="fa fa-comments" aria-hidden="true"> ${comments} </i>
+                </div>
+            </div>
+          </li>
+        `;
+  
+        todosCardsUl.appendChild(cardLista);
+      });
+  
+      let div = document.getElementById(`list-content-${listaID}`);
+      if (div) {
+        div.appendChild(divCards);
+      } else {
+        console.error(`Elemento com ID 'list-content-${listaID}' não encontrado.`);
+      }
+  }
+  else {
+    
+  }
  
-// }
+}
+
+// adicionar nova lista
+
+// NovaLista.addEventListener("click", (event) => {
+//   event.preventDefault();
+//   Modal.abrirDialogo(criarLista);
+// });
+
+
+function criarLista(boardID){
+
+  let nome = document.querySelector('input[name="nome"]').value;
+
+  const newlist = {
+    name: nome,
+    board_id: boardID,
+    position: 0
+  }
+
+  let createList = document.getElementById(`create-new-list-${listId}`);
+
+  Fetch.request('/lists/', newlist, 'POST').then(event=>{
+    console.log(event);
+  })
+}
+
 
 
 // novo quadro

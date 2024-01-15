@@ -6,7 +6,7 @@
 
 .list-page{
     background-color: #1D2125;
-    height: 100vh;
+    height: 100%;
 }
 /* listas */
 
@@ -45,6 +45,15 @@
     margin-left: 10px;
 }
 
+.div-lists {
+    display: flex;
+}
+
+.div-lists .create-new-list{
+    font-size: 50px;
+    margin: 10px;
+}
+
 /* cards */
 
 /* div dos cards */
@@ -71,16 +80,22 @@
 
 /* tags */
 .tags-board{
+    width: 100%;
     margin-top: 10px;
     display: flex;
     align-items: start;
-    justify-content: start;
+    justify-content: space-between;
     height: 20px;
     flex-wrap: nowrap;
 }
 
+.tags-board .delete-card{
+    margin-right: 1.5rem;
+}
+
 .tags{
     display: flex;
+    height: 1rem;
 }
 
 .tags li.tag{
@@ -100,7 +115,8 @@
     flex-direction: column;
 }
 
-.card-icons{
+.card-icons i{
+    margin-right: 10px;
 }
 
 

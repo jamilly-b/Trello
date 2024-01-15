@@ -23,3 +23,19 @@ function abrirDialogo(action){
 }
 
 export default {abrirDialogo};
+
+
+// let form = document.getElementById("modal-newBoard");
+// form.addEventListener("submit", (event) =>{
+//     event.preventDefault();
+//     action();
+//     dialogo.classList.add("no-show");
+//     dialogo.classList.remove("show");
+//     form.removeEventListener("submit", handleSubmit);
+// });
+
+// form.addEventListener("reset", (event)=>{
+//     event.preventDefault();
+//     dialogo.classList.remove("show");
+//     dialogo.classList.add("no-show");
+// });
