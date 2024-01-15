@@ -1,0 +1,117 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.list-page{
+    background-color: #1D2125;
+    height: 100vh;
+}
+/* listas */
+
+.list-page .all-lists{
+    display: flex;
+    list-style: none;
+}
+
+.list-page .all-lists li.list {
+    background-color: #101204;
+    min-height: 100px;
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.list-content{
+    width: 100%;
+    color: white;
+}
+
+.list-info{
+    display: flex;
+}
+.list-info span{
+    width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+}
+.list-icons{
+    display: flex;
+    justify-content: end;
+}
+.list-icons i{
+    margin-left: 10px;
+}
+
+/* cards */
+
+/* div dos cards */
+.show-cards {
+    margin-top: 10px;
+    height: 100%;
+}
+
+/* lista de cards */
+.all-cards {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+/* card individual */
+.all-cards li.card{
+    margin: 0px;
+    padding: 0px;
+    border-radius: 10px;
+    background-color: #22272B;
+    margin-top: 10px;
+}
+
+/* tags */
+.tags-board{
+    margin-top: 10px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    height: 20px;
+    flex-wrap: nowrap;
+}
+
+.tags{
+    display: flex;
+}
+
+.tags li.tag{
+    background-color: gray;
+    margin: 3px 5px;
+    width: 20px;
+    height: 100%;
+    list-style: none;
+    color: gray;
+}
+
+/* descriçao do card */
+.card-data{
+    height: 100%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-icons{
+}
+
+
+/* criar um card */
+.create-new-card{
+    justify-content: flex-start;
+    align-items: end;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.create-new-card span{
+    margin-left: 10px;
+    margin-top: 30px;
+}

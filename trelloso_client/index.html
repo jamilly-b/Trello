@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/listas.css">
+    <title>Trello</title>
+    <link rel="shortcut icon" href="img/treloso.png" type="image/x-icon">
+    <script defer type="module" src="js/main.js"></script>
+</head>
+
+<body>
+    <div id="forms">
+        <fieldset>
+            <legend>Meus Dados</legend>
+            <span id="me"></span>
+        </fieldset>
+        <!-- cadastro -->
+        <div class="form no-show" id="tela-cadastro">
+            <form id="form-create-user" autocomplete="on">
+                <img src="img/Trello_logo.svg.png" alt="" height="40px" width="150px" >
+                <legend>Registre-se para continuar</legend>
+                <input type="text" name="name" id="new-name" placeholder="Nome">
+                <input type="text" name="username" id="new-username" placeholder="Username">
+                <input type="password" name="password" id="new-password" placeholder="Password">
+                <input type="text" name="avatar" id="new-avatar" placeholder="Avatar URL">
+                <input type="submit" value="Registre-se">
+                <input type="reset" value="Cancelar">
+                <a id="exibir-login">Já tem conta? Faça Login</a>
+            </form>
+        </div>
+        <!-- login -->
+        <div class="form show" id="tela-login">
+            <form id="form-login" autocomplete="on">
+                <img src="img/Trello_logo.svg.png" alt="" height="40px" width="150px" >
+                <legend>Entre para continuar</legend>
+                    <input type="text" name="username" id="username">
+                    <input type="password" name="password" id="password">
+                    <input type="submit" value="Entrar">
+                    <input type="reset" value="Cancelar">
+                    <a id="exibir-cadastro">Ainda não tem uma conta? Faça cadastro</a>
+            </form>
+        </div>
+
+        <div class="form" id="listar-usuarios">
+            <legend>Listar Usuários</legend>
+            <button id="btn-users">Lista Usuários</button>
+            <ul id="list-users"></ul>
+        </div>
+    </div>
+
+    <div id="home" class="no-show" >
+        <!-- Uma barra de navegação -->
+        <nav id="nav-bar">
+            <!-- Adicionar um menu à barra de navegação (Opções para navegar entre as "páginas" e sair) -->
+            <menu>
+                <ul>
+                    <!-- 
+                    Home: Voltar para essa tela
+                    Sair: Voltar para a tela de login 
+                    -->
+                    <li><img src="img/trello-logo.gif" alt="" id="logo-trello-home"> </li>
+                    <li><a id="home-botton">Home</a></li>
+                    <li><a id="create-board">Novo</a></li>
+                    <li><a id="log-out">Sair</a></li>
+                </ul>
+            </menu>
+            <!-- Adicionar um ícone com o avatar do usuário, no canto direito -->
+            <!-- Ao clicar no ícone apresentar os dados do usuário -->
+             <!-- Imagem do usuário, informada no cadastro da conta: Exibir uma página com as informações
+            do usuário (Pode ser um um form para atualizar esses dados, mesmos campos da tela de
+            registro, mas não pode alterar o nome do usuário!) -->
+            <img src="img/icon.png" alt="Avatar" id="user-pic">
+        </nav>
+        <div class="list-page no-show" id="list-page"> 
+            <div class="div-lists" id="div-lists">
+                <!-- <ul class="all-lists" id="all-lists">
+                    <li class="list" id="">
+                        <div class="list-content">
+                            <div class="list-info"> 
+                                <span class="list-Name">Lista 1</span>
+                                <div class="list-icons">
+                                    <i class="fa fa-comments" aria-hidden="true"></i>
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            cards 
+                            <div class="show-cards"> 
+                                <ul class="all-cards">
+                                    <li class="card">
+                                        <div class="tags-board">
+                                            <ul class="tags">
+                                                <li class="tag">tag</li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-data"> 
+                                            <span id="card-description">descrição do card</span> 
+                                            <div class="card-icons">
+                                                <i class="fa fa-align-justify" aria-hidden="true"></i>
+                                                <i class="fa fa-comments" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="card">
+                                        <div class="tags-board">
+                                            <ul class="tags">
+                                                <li class="tag">tag</li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-data"> 
+                                            <span id="card-description">descrição do card</span> 
+                                            <div class="card-icons">
+                                                <i class="fa fa-align-justify" aria-hidden="true"></i>
+                                                <i class="fa fa-comments" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="card">
+                                        <div class="tags-board">
+                                            <ul class="tags">
+                                                <li class="tag">tag</li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-data"> 
+                                            <span id="card-description">descrição do card</span> 
+                                            <div class="card-icons">
+                                                <i class="fa fa-align-justify" aria-hidden="true"></i>
+                                                <i class="fa fa-comments" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+        
+                            <div class="create-new-card">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                <span class="new-card">Adicionar um cartão</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+        <main id="main-content">
+            <!-- Exibir os quadros criados pelo usuário separando os favoritos dos demais -->
+            <div id="main">
+                <div id="fav-boards-div" class="boards">
+                    <span>Quadros Favoritados</span>
+                    <div class="quadros" id="fav-boards">
+                        <ul id="quadros-fav" class="board-list">
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div id="all-boards-div" class="no-show">
+                    <span>Quadros</span>
+                    <div class="quadros" id="all-boards">
+                        <ul id="quadros" class="board-list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Exibir uma barra lateral com opções para filtrar a lista de quadros (mostrar todos, favoritos) -->
+            <aside id="barra-lateral" class="barra-lateral">
+                <ul>
+                    <li>aaaa</li>
+                    <li>aaaa</li>
+                    <li>aaaa</li>
+                    <li>aaaa</li>
+                    <li>aaaa</li>
+                </ul>
+            </aside>
+        </main>
+    </div>
+
+    <dialog id="dialog">
+        <form id="modal-newBoard">
+            <h3>Criar novo quadro</h3>
+            <input type="text" name="nome" placeholder="Nome">
+            <input type="text" name="color" id="board-color" placeholder="Cor">
+            <button type="submit">Criar</button>
+            <button type="reset">Cancelar</button>
+        </form>
+    </dialog>
+
+    
+</body>
+
+</html>
